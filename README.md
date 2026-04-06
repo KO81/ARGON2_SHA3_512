@@ -47,7 +47,7 @@ else false.
 
 ### 3 Levels of hardness
 the 3rd argument lets you choose between the different levels of hardness.
-every level has it own why to do the prework.
+every level has it own way to do the prework.
 level 2 even includes <mark>OPENSSL_RAW_DATA</mark>.
 
 ```php
