@@ -8,7 +8,8 @@ This one does also include openSSL encryption with raw data.
 Depending on the hardware you are running, the task takes longer or lesser time.
 Every hash is different every time.
 
-This makes backtracking of any kind multiple times harder, since ARGON2 is memory-hard to precompute.
+This makes backtracking of any kind multiple times harder, since ARGON2 is memory-hard to precompute.<br>
+Plus the hashes are unique everytime.
 
 with strict type checking and validation of given arguments.
 
