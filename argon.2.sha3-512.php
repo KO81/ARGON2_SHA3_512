@@ -53,6 +53,7 @@ class ARGON2_SHA3_512{
 	}function isValidHash(string $str){
 		$isValid=$this->valid;
 		if(!$isValid)return $this->ThrowError('Invalid dependencies given');
+		$isValid=false;
 		$test_a=str_starts_with($str,'[')&&str_ends_with($str,']');
 		if($test_a){$str=str_replace(['[',']'],'',$str);
 			$test_b=preg_replace('/[^a-fA-F0-9]/u','',$str)==$str;
