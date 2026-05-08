@@ -1,5 +1,5 @@
 <?php 
-error_reporting(E_ALL);
+error_reporting(E_ERROR | E_PARSE | E_RECOVERABLE_ERROR);
 
 //		argon.2.sha3-512
 //		argon2 sha3-512 comparison method
@@ -48,7 +48,7 @@ class ARGON2_SHA3_512{
 		elseif($level==1)return hash_pbkdf2(boundary_sha3_512,$pre_hash,$this->rotations,$this->tagLength,false);
 		return hash('sha3-512',hash_pbkdf2(boundary_sha3_512,$pre_hash,$this->rotations,$this->tagLength,false));
 	}private function openSSL(string $str,string $pass){
-		$iv=mb_substr(hash(fast_ALGO,$str.$pass),0,16);
+		$iv=mb_substr(hash(fast_ALGO,$str.$pass),0,4);
 		return openssl_encrypt($str,enc_ALGO,$pass,OPENSSL_RAW_DATA,$iv);
 	}function isValidHash(string $str){
 		$isValid=$this->valid;
@@ -69,6 +69,7 @@ class ARGON2_SHA3_512{
 		elseif($level==1)$combind=$this->SHA3_512_lock_hash($lock_pass.$this->SHA3_512_hash($txt_a));
 		else{$seconadary=$this->SHA3_512_hash($txt_a);
 			$combind=$this->openSSL($seconadary,$lock_pass);
+			if(!strlen($combind))$combind=$seconadary;
 		}return $bool?$this->ARGON2_hash($combind):$combind;
 	}function compareHash(){
 		$txt_a=$this->str_a;$txt_b=$this->str_b;
