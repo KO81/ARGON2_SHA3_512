@@ -4,11 +4,11 @@ error_reporting(E_ALL);
 //		argon.2.sha3-512
 //		argon2 sha3-512 comparison method
 //		author 				: 	KO81 aka Christian Feilert
-//		date last modified 	:	6/04-2026
+//		date last modified 	:	9/05-2026
 
-define('argon2_sha3_512','VERSION: 2.3.3.a');
+define('argon2_sha3_512','VERSION: 2.3.3.b');
 define('tagLength_ARRAY',[64,128,192,256]);
-if(!defined('enc_ALGO'))define('enc_ALGO','id-aes256-GCM');
+if(!defined('enc_ALGO'))define('enc_ALGO','aes-256-wrap-pad');
 if(!defined('fast_ALGO'))define('fast_ALGO','xxh3');
 if(!defined('boundary_sha3_512'))define('boundary_sha3_512','whirlpool');
 
